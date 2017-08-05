@@ -1,0 +1,152 @@
+<h1>Ihre Bestellung bei Amavat</h1>
+<%= form_for :order do |order_form| %>
+<%= order_form.fields_for :addresses do |company| %>
+<h2>Firmenadresse</h2>
+<p>
+  <%= company.label :company, 'Firmenname' %>
+  <%= company.text_field :company %>
+</p>
+<p>
+  <%= company.label :first_name, 'Ansprechpartner Vorname' %>
+  <%= company.text_field :first_name %>
+</p>
+<p>
+  <%= company.label :surname, 'Ansprechpartner Nachname' %>
+  <%= company.text_field :surname %>
+</p>
+<p>
+  <%= company.label :street_name, 'Straße' %>
+  <%= company.text_field :street_name %>
+</p>
+<p>
+  <%= company.label :street_number, 'Hausnummer' %>
+  <%= company.text_field :street_number %>
+</p>
+<p>
+  <%= company.label :post_code, 'PLZ' %>
+  <%= company.text_field :post_code %>
+</p>
+<p>
+  <%= company.label :city, 'Ort' %>
+  <%= company.text_field :city %>
+</p>
+<p>
+  <%= company.label :country, 'Land' %>
+  <%= company.text_field :country %>
+</p>
+<p>
+  <%= company.label :tax_no, 'Ust. ID' %>
+  <%= company.text_field :tax_no %>
+</p>
+<% end %>
+<%= order_form.fields_for :addresses do |person| %>
+<h2>Name und Anschrift des Geschäftsführers oder Einzelunternehmers</h2>
+<p>
+  <%= person.label :first_name, 'Vorname' %>
+  <%= person.text_field :first_name %>
+</p>
+<p>
+  <%= person.label :surname, 'Nachname' %>
+  <%= person.text_field :surname %>
+</p>
+<p>
+  <%= person.label :street_name, 'Straße' %>
+  <%= person.text_field :street_name %>
+</p>
+<p>
+  <%= person.label :street_number, 'Hausnummer' %>
+  <%= person.text_field :street_number %>
+</p>
+<p>
+  <%= person.label :post_code, 'PLZ' %>
+  <%= person.text_field :post_code %>
+</p>
+<p>
+  <%= person.label :city, 'Ort' %>
+  <%= person.text_field :city %>
+</p>
+<p>
+  <%= person.label :country, 'Land' %>
+  <%= person.text_field :country %>
+</p>
+<p>
+  <%= person.label :birthday, 'Geburtstag' %>
+  <%= person.text_field :birthday %>
+</p>
+<% end %>
+<h2>Ust. Registrierung soll vorgenommen werden für:</h2>
+<p>
+  <%= order_form.label :registration_germany, 'Deutschland' %>
+  <%= order_form.check_box :registration_germany %>
+</p>
+<p>
+  <%= order_form.label :registration_poland, 'Polen' %>
+  <%= order_form.check_box :registration_poland %>
+</p>
+<p>
+  <%= order_form.label :registration_czech, 'Tschchische Republik' %>
+  <%= order_form.check_box :registration_czech %>
+</p>
+<p>
+  <%= order_form.label :registration_austria, 'Österreich' %>
+  <%= order_form.check_box :registration_austria %>
+</p>
+<p>
+  <%= order_form.label :registration_spain, 'Spanien' %>
+  <%= order_form.check_box :registration_spain %>
+</p>
+<p>
+  <%= order_form.label :registration_france, 'Frankreich' %>
+  <%= order_form.check_box :registration_france %>
+</p>
+<p>
+  <%= order_form.label :registration_uk, 'Großbritannien' %>
+  <%= order_form.check_box :registration_uk %>
+</p>
+<p>
+  <%= order_form.label :registration_other, 'Andere Länder' %>
+  <%= order_form.check_box :registration_other %>
+</p>
+<h2>Eine Registrierung besteht schon, laufende Ust. Deklaration soll übernommen
+  werden für:</h2>
+<p>
+  <%= order_form.label :declaration_germany, 'Deutschland' %>
+  <%= order_form.check_box :declaration_germany %>
+</p>
+<p>
+  <%= order_form.label :declaration_poland, 'Polen' %>
+  <%= order_form.check_box :declaration_poland %>
+</p>
+<p>
+  <%= order_form.label :declaration_czech, 'Tschechische Republik' %>
+  <%= order_form.check_box :declaration_czech %>
+</p>
+<p>
+  <%= order_form.label :declaration_austria, 'Österreich' %>
+  <%= order_form.check_box :declaration_austria %>
+</p>
+<p>
+  <%= order_form.label :declaration_spain, 'Spanien' %>
+  <%= order_form.check_box :declaration_spain %>
+</p>
+<p>
+  <%= order_form.label :declaration_france, 'Frankreich' %>
+  <%= order_form.check_box :declaration_france %>
+</p>
+<p>
+  <%= order_form.label :declaration_uk, 'Großbritannien' %>
+  <%= order_form.check_box :declaration_uk %>
+</p>
+<p>
+  <%= order_form.label :declaration_other, 'Andere Länder' %>
+  <%= order_form.check_box :declaration_other %>
+</p>
+<p>
+  <%= order_form.label :confirmation, 'Ich bin mit der Mandatsvereinbarung
+      einverstanden' %>
+  <%= order_form.check_box :confirmation %>
+</p>
+<p>
+  <%= order_form.submit 'Preis ermitteln', class: "btn btn-primary" %>
+</p>
+<% end %>

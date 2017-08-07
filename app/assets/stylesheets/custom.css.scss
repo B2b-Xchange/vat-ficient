@@ -3,6 +3,11 @@
 
 $light-grey: #777;
 
+/* body */
+body {
+    margin-bottom: 10%;
+}
+
 /* header */
 #logo {
     float: right;
@@ -17,14 +22,50 @@ h1 {
     font-size: 3em;
     letter-spacing: -2px;
     margin-bottom: 30px;
-    text-align: center;
 }
 
 h2 {
     font-size: 1.2em;
     letter-spacing: -1px;
     margin-bottom: 30px;
-    text-align: center;
     font-weight: normal;
     color: $light-grey;
+}
+
+/* forms */
+input, textarea, select, .unedited-input {
+    border: 1px solid #bbb;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+input {
+    height: auto !important;
+}
+
+.half-size-left {
+    width: 45%;
+    float: left;
+    margin-right: 5%;
+}
+
+.half-size-right {
+    width: 45%;
+    float: left;
+    margin-left: 5%;
+}
+
+.confirmation {
+    border: 1px solid black;
+    margin: 20px;
+}
+
+.checkbox {
+    margin-left: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    span {
+        margin-left: 20px;
+        font-weigth: normal;
+    }
 }

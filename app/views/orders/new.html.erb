@@ -3,13 +3,13 @@
     <h1>Ihre Bestellung bei Amavat</h1>
     <%= form_for :order do |order_form| %>
     <p>
-      <%= order_form.label :email, 'E-mail Adresse' %>
+      <%= order_form.label :email, 'E-Mail Adresse' %>
       <%= order_form.email_field :email, class: 'form-control' %>
     </p>
     <%= order_form.fields_for :addresses do |company| %>
-    <h2>Firmenadresse</h2>
+    <h2>Firmenanschrift</h2>
     <p>
-      <%= company.label :company, 'Firmenname' %>
+      <%= company.label :company, 'Firma' %>
       <%= company.text_field :company, class: 'form-control' %>
     </p>
     <p>
@@ -47,7 +47,7 @@
       <%= company.text_field :country, class: 'form-control' %>
     </p>
     <p>
-      <%= company.label :tax_no, 'Ust. ID' %>
+      <%= company.label :tax_no, 'Ust-ID' %>
       <%= company.text_field :tax_no, class: 'form-control' %>
     </p>
     <% end %>
@@ -136,6 +136,12 @@
       <% end %>
     </p>
     <p>
+      <%= order_form.label :registration_italy, class: 'checkbox inline' do %>
+      <%= order_form.check_box :registration_italy %>
+      <span>Italien</span>
+      <% end %>
+    </p>
+    <p>
       <%= order_form.label :registration_other, class: 'checkbox inline' do %>
       <%= order_form.check_box :registration_other %>
       <span>Andere Länder</span>
@@ -186,19 +192,27 @@
       <% end %>
     </p>
     <p>
+      <%= order_form.label :declaration_italy, class: 'checkbox inline' do %>
+      <%= order_form.check_box :declaration_italy %>
+      <span>Italien</span>
+      <% end %>
+    </p>
+    <p>
       <%= order_form.label :declaration_other, class: 'checkbox inline' do %>
       <%= order_form.check_box :declaration_other %>
       <span>Andere Länder</span>
       <% end %>
     </p>
-    <p class="confirmation">
+    <div class="confirmation">
       <%= order_form.label :confirmation, class: 'checkbox inline' do %>
       <%= order_form.check_box :confirmation %>
-      <span>Ich stimme der Mandatsvereinbarung zu.</span>
+      <span class="has-warning">Ich stimme der Mandatsvereinbarung zu.</span>
       <% end %>
-    </p>
+    </div>
     <p style="font-size: larger; margin-left: 20px;">
-      Die Mandatsvereinbarung kann <a href="#">hier</a> geladen werden.
+      Die Mandatsvereinbarung kann
+      <a href="<%= asset_path('SyndicateMembershipAgreement.pdf') %>">
+        hier</a> geladen werden.
     </p>
     <p style="margin: 20px;">
       <%= order_form.submit 'Preis ermitteln', class: "btn btn-primary" %>

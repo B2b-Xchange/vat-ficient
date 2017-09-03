@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h1>Ihre Bestellung bei Amavat</h1>
-    <%= form_for :order do |order_form| %>
+    <%= form_for :order, url: orders_path do |order_form| %>
     <p>
       <%= order_form.label :email, 'E-Mail Adresse' %>
       <%= order_form.email_field :email, class: 'form-control' %>
     </p>
-    <%= order_form.fields_for :addresses do |company| %>
+    <%= order_form.fields_for :company_address do |company| %>
     <h2>Firmenanschrift</h2>
     <p>
       <%= company.label :company, 'Firma' %>
@@ -51,7 +51,7 @@
       <%= company.text_field :tax_no, class: 'form-control' %>
     </p>
     <% end %>
-    <%= order_form.fields_for :addresses do |person| %>
+    <%= order_form.fields_for :person_address do |person| %>
     <h2>Name und Anschrift des Geschäftsführers oder Einzelunternehmers</h2>
     <p>
       <div class="half-size-left">
@@ -211,7 +211,7 @@
     </div>
     <p style="font-size: larger; margin-left: 20px;">
       Die Mandatsvereinbarung kann
-      <a href="<%= asset_path('SyndicateMembershipAgreement.pdf') %>">
+      <a href="<%= asset_path('SyndicateMembershipAgreement.pdf') %>" target="_blank">
         hier</a> geladen werden.
     </p>
     <p style="margin: 20px;">

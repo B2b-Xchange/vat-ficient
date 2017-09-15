@@ -6,13 +6,13 @@ class Address < ApplicationRecord
   validates :street_number, presence: true
   validates :post_code, presence: true
   validates :city, presence: true
-  validates :is_valid_birthday?
+  validate :is_valid_birthday?
 
 
   private
   def is_valid_birthday?
     if ((:birthday.is_a?(Date) rescue ArgumentError) == ArgumentError)
-      errors.add(:birthday, 'Ungültiges Geurtsdatum angegeben')
+      errors.add(:birthday, 'Ungültiges Geburtsdatum angegeben')
     end
   end
   

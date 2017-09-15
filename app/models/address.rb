@@ -13,6 +13,7 @@ class Address < ApplicationRecord
   def is_valid_birthday?
     if ((:birthday.is_a?(Date) rescue ArgumentError) == ArgumentError)
       errors.add(:birthday, 'Ungültiges Geurtsdatum angegeben')
+    end
   end
   
 end

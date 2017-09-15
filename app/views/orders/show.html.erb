@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Ihre Bestellung wurde erstellt</h1>
+
+    <p>
+      Eine Bestellung mit der Bestellnummer <b><%= @order.number %></b> wurde erstellt.
+    </p>
+    <p>
+      Die Erstanzahlung beträgt <b><%= @order.value / 100 %> EUR</b>. Als alleiniges Zahlungsmittel
+      akzeptieren wir zum derzeitigen Zeitpunkt nur PayPal.
+      <br />
+      <br />
+      <b>
+        Sofern Sie eine Zahlung über PayPal nicht vornehmen können, klicken Sie
+        bitte die folgende Schaltfläche an und Sie werden von einem Mitarbeiter
+        mit alternativen Zahlungsarten kontaktiert.
+      </b>
+      <br />
+      <br />
+      <a href="#" class="btn btn-warning">Kein PayPal Konto</a>
+    </p>
+    <br />
+    <br />
+    <p>
+      Nach Zahlungseingang
+      übersenden wir Ihnen Aufstellungen zu den für die umsatzsteuerlichen
+      Registrierungen erforderlichen Unterlagen/Angaben in den ausgewählten
+      Ländern.
+    </p>
+    <p>
+      Sobald Sie uns diese Angaben/Unterlagen zur Verfügung gestellt haben,
+      erstellen wir die notwendigen Vollmachten, Anträge und Formulare, die
+      wir Ihnen anschließend zur Unterzeichnung übersenden. Nach Rücksendung
+      der unterzeichneten Dokumente werden wir die Anträge bei den zuständigen
+      Finanzbehörden einreichen.
+    </p>
+    <p>
+      Sofern Sie Rückfragen zum Vorgehen oder zu unserer Mandatsvereinbarung
+      haben, kontaktieren Sie uns gerne unter dieser e-mail Adresse:
+      <a href="mailto:alexander.schallock@amavat.eu">Alexander.Schallock@amavat.eu</a>
+    </p>
+    <p>
+      <b>Klicken Sie bitte auf diese Schaltfläche um die Voranzahlung sofort zu zahlen:</b>
+    </p>
+    <% if @order.paid_time == nil %>
+    <a href="#" class="btn btn-success">Mit PayPal zahlen</a>
+    <% else %>
+    <b>Diese Bestellung wurde schon erfolgreich bezahlt.</b>
+    <% end %>
+  </div>
+</div>

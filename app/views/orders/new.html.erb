@@ -2,6 +2,7 @@
   <div class="col-md-6 col-md-offset-3">
     <h1>Ihre Bestellung bei Amavat</h1>
     <%= form_for :order, url: orders_path do |order_form| %>
+    <%= render 'shared/error_messages' %>
     <p>
       <%= order_form.label :email, 'E-Mail Adresse' %>
       <%= order_form.email_field :email, class: 'form-control' %>
@@ -93,116 +94,120 @@
     </p>
     <% end %>
     <h2>Ust. Registrierung soll vorgenommen werden für:</h2>
+    <%= order_form.fields_for :registrations do |registration| %>
     <p>
-      <%= order_form.label :registration_germany, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_germany %>
+      <%= registration.label :registration_germany, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_germany %>
       <span>Deutschland</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_poland, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_poland %>
+      <%= registration.label :registration_poland, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_poland %>
       <span>Polen</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_czech, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_czech %>
+      <%= registration.label :registration_czech, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_czech %>
       <span>Tschechische Republik</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_austria, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_austria %>
+      <%= registration.label :registration_austria, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_austria %>
       <span>Österreich</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_spain, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_spain %>
+      <%= registration.label :registration_spain, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_spain %>
       <span>Spanien</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_france, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_france %>
+      <%= registration.label :registration_france, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_france %>
       <span>Frankreich</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_uk, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_uk %>
+      <%= registration.label :registration_uk, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_uk %>
       <span>Großbritannien</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_italy, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_italy %>
+      <%= registration.label :registration_italy, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_italy %>
       <span>Italien</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :registration_other, class: 'checkbox inline' do %>
-      <%= order_form.check_box :registration_other %>
+      <%= registration.label :registration_other, class: 'checkbox inline' do %>
+      <%= registration.check_box :registration_other %>
       <span>Andere Länder</span>
       <% end %>
     </p>
+    <% end %>
     <h2>Eine Registrierung besteht schon, laufende Ust. Deklaration soll übernommen
       werden für:</h2>
+    <%= order_form.fields_for :declarations do |declaration| %>
     <p>
-      <%= order_form.label :declaration_germany, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_germany %>
+      <%= declaration.label :declaration_germany, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_germany %>
       <span>Deutschland</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_poland, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_poland %>
+      <%= declaration.label :declaration_poland, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_poland %>
       <span>Polen</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_czech, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_czech %>
+      <%= declaration.label :declaration_czech, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_czech %>
       <span>Tschechische Republik</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_austria, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_austria %>
+      <%= declaration.label :declaration_austria, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_austria %>
       <span>Österreich</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_spain, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_spain %>
+      <%= declaration.label :declaration_spain, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_spain %>
       <span>Spanien</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_france, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_france %>
+      <%= declaration.label :declaration_france, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_france %>
       <span>Frankreich</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_uk, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_uk %>
+      <%= declaration.label :declaration_uk, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_uk %>
       <span>Großbritannien</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_italy, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_italy %>
+      <%= declaration.label :declaration_italy, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_italy %>
       <span>Italien</span>
       <% end %>
     </p>
     <p>
-      <%= order_form.label :declaration_other, class: 'checkbox inline' do %>
-      <%= order_form.check_box :declaration_other %>
+      <%= declaration.label :declaration_other, class: 'checkbox inline' do %>
+      <%= declaration.check_box :declaration_other %>
       <span>Andere Länder</span>
       <% end %>
     </p>
+    <% end %>
     <div class="confirmation">
       <%= order_form.label :confirmation, class: 'checkbox inline' do %>
       <%= order_form.check_box :confirmation %>

@@ -1,0 +1,18 @@
+de:
+  activerecord:
+    models:
+      order:
+        one: Bestellung
+        other: Bestellungen
+      address:
+        one: Adresse
+        other: Adressen
+    attributes:
+      order:
+        email: E-Mail Adresse
+        confirmation: Mandatsvereinbarung
+      address:
+        street_name: Straße
+        street_number: Hausnummer
+        post_code: PLZ
+        city: Ort

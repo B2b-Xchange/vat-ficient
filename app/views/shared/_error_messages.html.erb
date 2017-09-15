@@ -1,0 +1,20 @@
+<% if @order.errors.any? %>
+<div id="error-explanation">
+  <div class="alert alert-danger">
+    Das Formular enthält Fehler.
+  </div>
+  <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+    <% if !msg.include? "Addresses" %>
+    <li><%= msg %></li>
+    <% end %>
+    <% end %>
+  </ul>
+  <ul>
+    <% @order.addresses.each do |address| %>
+    <% address.errors.full_messages.each do |msg| %>
+    <li><%= (address.kind == 1 ? "Firmenanschrift:" : "Geschäftsführeranschrift:") + " " + msg %></li>
+    <% end %>
+    <% end %>
+</div>
+<% end %>

@@ -16,3 +16,6 @@ de:
         street_number: Hausnummer
         post_code: PLZ
         city: Ort
+        company: Firma
+        first_name: Vorname
+        surname: Nachname

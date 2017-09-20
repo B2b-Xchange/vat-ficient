@@ -1,0 +1,22 @@
+Bestell-ID: <%= @order.number %>
+E-Mail: <%= @order.email %>
+
+<% @order.addresses.each do |address| %>
+<%= address.kind == 1 ? "FIRMENADRESSE" : "ADRESSE DER VERANTWORTLICHEN PERSON" %>
+
+Firma: <%= address.company %>
+Name: <%= address.first_name %> <%= address.surname %>
+Straße: <%= address.street_name %> <%= address.street_number %>
+Ort: <%= address.post_code %> <%= address.city %>
+Ust. ID: <%= address.tax_no %>
+Geburtsdatum: <%= address.birthday %>
+
+<% end %>
+
+BESTELLPOSITIONEN
+
+<% @order.order_lines.each do |line| %>
+<%= line.kind == 1 ? "Ust. Registrierung" : "Ust. Deklaration" %> in <%= line.country_iso_code %>
+<% end %>
+
+PREIS: <%= @order.value / 100 %> EUR

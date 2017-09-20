@@ -61,7 +61,18 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "vat-ficient_#{Rails.env}"
   config.action_mailer.perform_caching = false
-
+  # 17/09/17
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.your-server.de',
+    port: 587,
+    domain: 'b2bxchange.de',
+    user_name: ENV['MAIL_ACCOUNT'],
+    password: ENV['MAIL_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

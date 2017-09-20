@@ -1,3 +1,4 @@
+# coding: utf-8
 class OrdersController < ApplicationController
   require 'securerandom'
 
@@ -123,7 +124,7 @@ class OrdersController < ApplicationController
     else
       price += 250
     end
-    @order.value = price * 100 # perist in minor units
+    @order.value = price * 100 # persist in minor units
 
     if !@order.save
       render 'new'
@@ -131,6 +132,15 @@ class OrdersController < ApplicationController
     end
                                   
     redirect_to @order
+  end
+
+  def deploy_cant_pay_email
+    @order = Order.includes(:order_lines, :addresses).find(params[:id])
+    OrderMailer.no_paypal_account_email(@order).deliver_later
+
+    notice = "Eine E-mail wurde an Amavat gesendet. Sie werden in Kürze mit alternativen Zahlungsmethoden kontaktiert."
+    flash[:success] = notice
+    redirect_to new_order_path
   end
 
   private

@@ -13,7 +13,7 @@
   <ul>
     <% @order.addresses.each do |address| %>
     <% address.errors.full_messages.each do |msg| %>
-    <li><%= (address.kind == 1 ? "Firmenanschrift:" : "Geschäftsführeranschrift:") + " " + msg %></li>
+    <li><%= (address.kind == 1 ? "Firmenanschrift:" : "Anschrift Verantwortlicher:") + " " + msg %></li>
     <% end %>
     <% end %>
 </div>

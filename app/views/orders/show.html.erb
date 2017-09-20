@@ -7,17 +7,18 @@
     </p>
     <p>
       Die Erstanzahlung beträgt <b><%= @order.value / 100 %> EUR</b>. Als alleiniges Zahlungsmittel
-      akzeptieren wir zum derzeitigen Zeitpunkt nur PayPal.
+      akzeptieren wir nur PayPal.
       <br />
       <br />
       <b>
         Sofern Sie eine Zahlung über PayPal nicht vornehmen können, klicken Sie
-        bitte die folgende Schaltfläche an und Sie werden von einem Mitarbeiter
+        bitte die folgende Schaltfläche an und Sie werden von einem Amavat Mitarbeiter
         mit alternativen Zahlungsarten kontaktiert.
       </b>
       <br />
       <br />
-      <a href="#" class="btn btn-warning">Kein PayPal Konto</a>
+      <%= button_to "Kein PayPal Konto", deploy_cant_pay_email_order_path(@order), class: "btn btn-warning",
+          data: { confirm: 'Sind Sie sicher das Sie Kontakt von Amavat mit alternativen Zahlungsmethoden wünschen?' } %>
     </p>
     <br />
     <br />
@@ -37,13 +38,13 @@
     <p>
       Sofern Sie Rückfragen zum Vorgehen oder zu unserer Mandatsvereinbarung
       haben, kontaktieren Sie uns gerne unter dieser e-mail Adresse:
-      <a href="mailto:alexander.schallock@amavat.eu">Alexander.Schallock@amavat.eu</a>
+      <a href="mailto:alexander.schallock@amavat.eu">Alexander.Schallock@amavat.eu</a>.
     </p>
     <p>
-      <b>Klicken Sie bitte auf diese Schaltfläche um die Voranzahlung sofort zu zahlen:</b>
+      <b>Klicken Sie bitte auf folgende Schaltfläche um die Voranzahlung sofort zu leisten.</b>
     </p>
     <% if @order.paid_time == nil %>
-    <a href="#" class="btn btn-success">Mit PayPal zahlen</a>
+    <%= button_to "Mit PayPal zahlen", order_payments_path(@order), class: "btn btn-success" %>
     <% else %>
     <b>Diese Bestellung wurde schon erfolgreich bezahlt.</b>
     <% end %>

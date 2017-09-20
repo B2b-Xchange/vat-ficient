@@ -73,6 +73,10 @@ input {
         margin-left: 20px;
         font-weigth: normal;
     }
+    input {
+        width: auto;
+        margin-left: 0;
+    }
 }
 
 #error-explanation {

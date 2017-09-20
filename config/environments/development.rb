@@ -36,8 +36,8 @@ Rails.application.configure do
     address: 'smtp.your-server.de',
     port: 587,
     domain: 'b2bxchange.de',
-    user_name: _,
-    password: _,
+    user_name: ENV['MAIL_ACCOUNT'],
+    password: ENV['MAIL_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
   }

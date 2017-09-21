@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'payment@b2bxchange.de'
+  default from: ENV['MAIL_ACCOUNT']
   layout 'mailer'
 end

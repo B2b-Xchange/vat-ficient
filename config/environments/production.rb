@@ -64,7 +64,7 @@ Rails.application.configure do
   # 17/09/17
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.your-server.de',
+    address: 'mail.your-server.de',
     port: 587,
     domain: 'b2bxchange.de',
     user_name: ENV['MAIL_ACCOUNT'],

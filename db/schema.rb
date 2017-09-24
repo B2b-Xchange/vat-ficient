@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917203337) do
+ActiveRecord::Schema.define(version: 20170924201507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170917203337) do
     t.datetime "updated_at", null: false
     t.bigint "order_id"
     t.index ["order_id"], name: "index_payments_on_order_id"
+    t.index ["transaction_reference"], name: "index_payments_on_transaction_reference"
   end
 
   add_foreign_key "addresses", "orders"

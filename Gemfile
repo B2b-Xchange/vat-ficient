@@ -58,3 +58,5 @@ group :production do
 end
 
 gem 'bootstrap-sass'
+gem 'paypal-sdk-rest'
+

@@ -20,7 +20,7 @@
   <% @order.order_lines.each do |line| %>
   <li>
     <%= line.kind == 1 ? "Ust. Registrierung" : "Ust. Deklaration" %>
-    in <%= line.country_iso_code %>
+    in <%= line.country_iso_code == nil ? "Andere" : line.country_iso_code %>
   </li>
   <% end %>
 </ul>

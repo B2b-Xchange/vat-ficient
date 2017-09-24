@@ -138,7 +138,7 @@ class OrdersController < ApplicationController
     @order = Order.includes(:order_lines, :addresses).find(params[:id])
     OrderMailer.no_paypal_account_email(@order).deliver_later
 
-    notice = "Eine E-mail wurde an Amavat gesendet. Sie werden in Kürze mit alternativen Zahlungsmethoden kontaktiert."
+    notice = "Eine E-Mail wurde an Amavat gesendet. Sie werden in Kürze mit alternativen Zahlungsmethoden kontaktiert."
     flash[:success] = notice
     redirect_to new_order_path
   end

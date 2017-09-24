@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'payment/execute', to: 'payments#execute'
+  get 'payment/cancel', to: 'payments#cancel'
+  
   root 'orders#new'
 end

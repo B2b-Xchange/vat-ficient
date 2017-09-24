@@ -6,10 +6,10 @@ class PaymentsController < ApplicationController
   # paypal execute callback (no order id)
   def execute
 
-    payment_to_execute = PayPal::SDK::REST.Payment.find(params['paymentId'])
+    payment_to_execute = PayPal::SDK::REST::Payment.find(params['paymentId'])
     if payment_to_execute.execute(:payer_id => params['PayerID'])
       # use find again to load all information
-      payment_to_execute = PayPal::SDK::REST.Payment.find(params['paymentId'])
+      payment_to_execute = PayPal::SDK::REST::Payment.find(params['paymentId'])
       # success
       # find payment with payment referece and set new sale payment reference and set order to paid
       @payment = Payment.include(:order).find(transaction_reference: params['paymentId'])
@@ -34,10 +34,12 @@ class PaymentsController < ApplicationController
 
     # build payment object
     order = Order.find(params[:order_id])
-    @payment = PayPal::SDK::REST.Payment
+    @payment = PayPal::SDK::REST::Payment
                  .new({
                         :intent => "sale",
-                        :payee => "paypal@amavat.eu",
+                        :payee => {
+                          :email => "paypal@amavat.eu"
+                        },
                         :payer => {
                           :payment_method => "paypal"
                         },

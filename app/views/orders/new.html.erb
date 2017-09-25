@@ -7,7 +7,7 @@
       <%= order_form.label :email, 'E-Mail Adresse' %>
       <%= order_form.email_field :email, class: 'form-control' %>
     </p>
-    <%= order_form.fields_for :company_address do |company| %>
+    <%= order_form.fields_for :company_address, @company_address do |company| %>
     <h2>Firmenanschrift</h2>
     <p>
       <%= company.label :company, 'Firma' %>
@@ -52,7 +52,7 @@
       <%= company.text_field :tax_no, class: 'form-control' %>
     </p>
     <% end %>
-    <%= order_form.fields_for :person_address do |person| %>
+    <%= order_form.fields_for :person_address, @person_address do |person| %>
     <h2>Name und Anschrift des Geschäftsführers oder Einzelunternehmers</h2>
     <p>
       <div class="half-size-left">

@@ -2,7 +2,6 @@
 class OrdersController < ApplicationController
   require 'securerandom'
 
-
   def index
   end
 
@@ -13,6 +12,8 @@ class OrdersController < ApplicationController
   
   def new
     @order = Order.new
+    @company_address = Address.new
+    @person_address = Address.new
 
   end
 

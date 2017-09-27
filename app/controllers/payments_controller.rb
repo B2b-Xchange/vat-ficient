@@ -41,9 +41,6 @@ class PaymentsController < ApplicationController
     @payment = PayPal::SDK::REST::Payment
                  .new({
                         :intent => "sale",
-                        :payee => {
-                          :email => "paypal@amavat.eu"
-                        },
                         :payer => {
                           :payment_method => "paypal"
                         },
@@ -52,6 +49,9 @@ class PaymentsController < ApplicationController
                           :cancel_url => ENV['PAYPAL_CANCEL_URL']
                         },
                         :transactions => [{
+                                            :payee => {
+                                              :email => "paypal@amavat.eu"
+                                            },
                                             :item_list => {
                                               :items => [{
                                                            :name => "Amavat Voranzahlung",
@@ -71,10 +71,10 @@ class PaymentsController < ApplicationController
 
     if @payment.create
       # create payment in db
-      order.payment.create({payment_type: 1,
-                            kind: 1,
-                            status: 1,
-                            transaction_reference: @payment.id })
+      order.payments.create({payment_type: 1,
+                             kind: 1,
+                             status: 1,
+                             transaction_reference: @payment.id })
       
       # redirect to approval url
       @payment.links.each do |link|

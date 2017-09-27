@@ -2,6 +2,7 @@
 class Order < ApplicationRecord
   has_many :addresses
   has_many :order_lines
+  has_many :payments
   validates_associated :addresses
 
   before_save { self.email = email.downcase }

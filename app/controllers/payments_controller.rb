@@ -56,13 +56,13 @@ class PaymentsController < ApplicationController
                                               :items => [{
                                                            :name => "Amavat Voranzahlung",
                                                            :sku => "1",
-                                                           :price => order.value.to_s,
+                                                           :price => (order.value / 100).to_s,
                                                            :currency => "EUR",
                                                            :quantity => 1
                                                          }]
                                             },
                                             :amount => {
-                                              :total => order.value.to_s,
+                                              :total => (order.value / 100).to_s,
                                               :currency => "EUR"
                                             },
                                             :description => "Voranzahlung für Bestellung " + order.number

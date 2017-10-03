@@ -6,12 +6,12 @@
 <% @order.addresses.each do |address| %>
 <h2><%= address.kind == 1 ? "Firmenadresse" : "Adresse der verantwortlichen Person" %></h2>
 <p>
-  Firma: <%= address.company %><br />
+  <% if address.kind == 1 %>Firma: <%= address.company %><br /><% end  %>
   Name: <%= address.first_name %> <%= address.surname %><br />
   Straße: <%= address.street_name %> <%= address.street_number %><br />
   Ort: <%= address.post_code %> <%= address.city %><br />
-  Ust. ID: <%= address.tax_no %><br />
-  Geburtstag: <%= address.birthday %><br />
+  <% if address.kind == 1 %>Ust. ID: <%= address.tax_no %><br /><% end %>
+  <% if address.kind == 2 && !address.birthday.nil? %>Geburtstag: <%= address.birthday.long %><br /><% end  %>
 </p>
 <% end %>
 

@@ -4,12 +4,12 @@ E-Mail: <%= @order.email %>
 <% @order.addresses.each do |address| %>
 <%= address.kind == 1 ? "FIRMENADRESSE" : "ADRESSE DER VERANTWORTLICHEN PERSON" %>
 
-Firma: <%= address.company %>
+<%= address.kind == 1 ? "Firma: " + address.company : "" %>
 Name: <%= address.first_name %> <%= address.surname %>
 Straße: <%= address.street_name %> <%= address.street_number %>
 Ort: <%= address.post_code %> <%= address.city %>
-Ust. ID: <%= address.tax_no %>
-Geburtsdatum: <%= address.birthday %>
+<%= address.kind == 1 ? "Ust. ID: " + address.tax_no : "" %>
+<%= address.kind == 2 && address.birthday != nil ? "Geburtsdatum: " + address.birthday.long : "" %>
 
 <% end %>
 

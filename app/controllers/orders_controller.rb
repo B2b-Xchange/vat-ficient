@@ -14,17 +14,23 @@ class OrdersController < ApplicationController
     @order = Order.new
     @company_address = Address.new
     @person_address = Address.new
-
+    @registraiongs = Registration.new
+    @declarations = Declaration.new
   end
 
   def create
    
-    @order = Order.new(order_params)
+    @order = Order.new order_params
     @order.number = SecureRandom.uuid
-    @company_address = @order.addresses.build(address_params[:company_address])
+    @company_address = @order.addresses.build address_params[:company_address]
     @company_address.kind = 1
-    @person_address = @order.addresses.build(address_params[:person_address])
+    @person_address = @order.addresses.build address_params[:person_address]
     @person_address.kind = 2
+
+    # helper objects, are not persisted only for form builder
+    @registrations = Registration.new order_line_params[:registrations]
+    @declarations = Declaration.new order_line_params[:declarations]
+    # end helper objects
 
     # store order line params to variables for reuse
     r_de = order_line_params[:registrations][:registration_germany]
@@ -207,8 +213,8 @@ class OrdersController < ApplicationController
     params.require(:order).permit(registrations: [:registration_germany, :registration_poland,
                                                   :registration_czech, :registration_austria,
                                                   :registration_spain, :registration_france, :registration_uk,
-                                                  :registration_italy, :registration_other, :declaration_germany],
-                                  declarations: [:declaration_poland, :declaration_czech, :declaration_austria,
+                                                  :registration_italy, :registration_other],
+                                  declarations: [:declaration_germany, :declaration_poland, :declaration_czech, :declaration_austria,
                                                  :declaration_spain, :declaration_france, :declaration_uk,
                                                  :declaration_italy, :declaration_other])
   end

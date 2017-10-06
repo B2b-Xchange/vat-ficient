@@ -94,7 +94,7 @@
     </p>
     <% end %>
     <h2>Ust. Registrierung soll vorgenommen werden für:</h2>
-    <%= order_form.fields_for :registrations do |registration| %>
+    <%= order_form.fields_for 'registrations[]', [] do |registration| %>
     <p>
       <%= registration.label :registration_germany, class: 'checkbox inline' do %>
       <%= registration.check_box :registration_germany %>
@@ -152,7 +152,7 @@
     <% end %>
     <h2>Eine Registrierung besteht schon, laufende Ust. Deklaration soll übernommen
       werden für:</h2>
-    <%= order_form.fields_for :declarations do |declaration| %>
+    <%= order_form.fields_for 'declarations[]', [] do |declaration| %>
     <p>
       <%= declaration.label :declaration_germany, class: 'checkbox inline' do %>
       <%= declaration.check_box :declaration_germany %>

@@ -145,7 +145,9 @@ class OrdersController < ApplicationController
       end
     end
 
-    if number_registration < 3
+    if number_registration < 1
+      price += 0
+    elsif number_registration < 3
       price += 420
     elsif number_registration < 5
       price += 750
@@ -153,7 +155,9 @@ class OrdersController < ApplicationController
       price += 950
     end
 
-    if number_declaration < 4
+    if number_declaration < 1
+      price += 0
+    elsif number_declaration < 4
       price += 150
     else
       price += 250
